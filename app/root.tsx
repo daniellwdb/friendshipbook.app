@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "remix";
+import theme from "~/theme";
 
 type DocumentProps = {
   children: React.ReactNode;
@@ -36,7 +37,7 @@ function Document({ children, title = "FriendshipBook" }: DocumentProps) {
 export default function App() {
   return (
     <Document>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Outlet />
       </ChakraProvider>
     </Document>

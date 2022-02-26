@@ -9,7 +9,8 @@
     "dev": "cross-env NODE_ENV=development remix build && run-p dev:*",
     "dev:node": "cross-env NODE_ENV=development nodemon ./build/index.js",
     "dev:remix": "cross-env NODE_ENV=development remix watch",
-    "postinstall": "remix setup node",
+    "gen:theme-typings": "chakra-cli tokens ./app/theme/index.ts",
+    "postinstall": "remix setup node && npm run gen:theme-typings",
     "start": "cross-env NODE_ENV=production node ./build/index.js"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "sirv": "^2.0.2"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "^1.8.2",
     "@remix-run/dev": "^1.2.2",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
