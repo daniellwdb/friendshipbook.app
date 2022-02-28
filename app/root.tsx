@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
 } from "remix";
 import theme from "~/theme";
+import Fonts from "./Fonts";
 
 type DocumentProps = {
   children: React.ReactNode;
@@ -38,6 +39,7 @@ export default function App() {
   return (
     <Document>
       <ChakraProvider theme={theme}>
+        <Fonts />
         <Outlet />
       </ChakraProvider>
     </Document>

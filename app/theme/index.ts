@@ -1,3 +1,10 @@
 import { extendTheme } from "@chakra-ui/react";
+import foundations from "./foundations";
+import * as components from "./components";
 
-export default extendTheme();
+const overrides = {
+  ...foundations,
+  components
+};
+
+export default extendTheme(overrides);
