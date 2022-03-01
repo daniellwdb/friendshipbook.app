@@ -8,8 +8,75 @@ import {
   Heading,
   Image,
   Stack,
+  Text,
   useToken,
 } from "@chakra-ui/react";
+
+type FeatureProps = {
+  keyword: string;
+  title: string;
+  description: string;
+  reverse?: boolean;
+  cta?: JSX.Element;
+};
+
+const features = [
+  {
+    keyword: "Online",
+    title: "In your pocket",
+    description:
+      "As Stephen King once said: “Books are a uniquely portable magic”. With FriendshipBook, your book is available both online and offline and on all your devices, take your memories anywhere you go!",
+  },
+  {
+    keyword: "Unique",
+    title: "Endless possibilities",
+    description:
+      "FriendshipBook offers a lot of customization for pages, this allows you to capture memories in a unique way. What are you waiting for?",
+  },
+  {
+    keyword: "Eco-friendly",
+    title: "Save the trees!",
+    description:
+      "Unlike physical books, everything in FriendshipBook is online, meaning less harm is done to nature.",
+  },
+];
+
+function Feature({
+  keyword,
+  title,
+  description,
+  cta,
+  reverse = false,
+}: FeatureProps) {
+  return (
+    <Stack
+      direction={{
+        base: "column",
+        sm: "column",
+        lg: reverse ? "row-reverse" : "row",
+      }}
+      align="center"
+      justify="space-between"
+      textAlign={{ base: "center", sm: "center", lg: "left" }}
+      color="white"
+      spacing={8}
+    >
+      <Box maxW="lg">
+        <chakra.h4 fontFamily="heading" fontSize="xl" maxW="4xl">
+          {keyword}
+        </chakra.h4>
+        <Heading as="h2" size="2xl" maxW="2xl" mt={4} mb={6}>
+          {title}
+        </Heading>
+        <Text fontSize="lg" fontWeight="medium" color="elements.paragraph">
+          {description}
+        </Text>
+        {cta}
+      </Box>
+      <Box w="800px" h="350px" maxW="2xl" bgColor="white" rounded="xl" />
+    </Stack>
+  );
+}
 
 export default function Index() {
   const [space5, space6, space10, space12, space14] = useToken(
@@ -104,7 +171,7 @@ export default function Index() {
         py={{ base: 5, sm: 12, lg: 24 }}
       >
         <Container maxW="container.xl">
-          <Center flexDirection="column" textAlign="center">
+          <Center flexDirection="column" textAlign="center" mb={{ base: 5, sm: 12, lg: 24 }}>
             <chakra.h4 fontSize="xl" maxW="4xl" color="elements.paragraph">
               Gaston Bachelard:
             </chakra.h4>
@@ -121,6 +188,22 @@ export default function Index() {
               starts off as blank pages, will end up with memories.
             </chakra.h3>
           </Center>
+          <Stack spacing={{ base: 5, sm: 12, lg: 24 }}>
+            {features.map((feature, idx) => (
+              <Feature
+                key={feature.title}
+                {...(idx === 1 && {
+                  cta: (
+                    <Button variant="primaryCta" mt={6}>
+                      Explore
+                    </Button>
+                  ),
+                  reverse: true,
+                })}
+                {...feature}
+              />
+            ))}
+          </Stack>
         </Container>
       </chakra.section>
     </chakra.main>
