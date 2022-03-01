@@ -7,6 +7,9 @@ import {
   Flex,
   Heading,
   Image,
+  Input,
+  InputGroup,
+  SimpleGrid,
   Stack,
   Text,
   useToken,
@@ -171,7 +174,11 @@ export default function Index() {
         py={{ base: 5, sm: 12, lg: 24 }}
       >
         <Container maxW="container.xl">
-          <Center flexDirection="column" textAlign="center" mb={{ base: 5, sm: 12, lg: 24 }}>
+          <Center
+            flexDirection="column"
+            textAlign="center"
+            mb={{ base: 5, sm: 12, lg: 24 }}
+          >
             <chakra.h4 fontSize="xl" maxW="4xl" color="elements.paragraph">
               Gaston Bachelard:
             </chakra.h4>
@@ -204,6 +211,70 @@ export default function Index() {
               />
             ))}
           </Stack>
+        </Container>
+      </chakra.section>
+      <chakra.section
+        bgColor="elements.paragraph"
+        color="elements.background"
+        py={{ base: 5, sm: 12, lg: 24 }}
+      >
+        <Container maxW="container.xl">
+          <Box textAlign={{ base: "center", sm: "center", lg: "left" }}>
+            <Heading as="h2" size="2xl">
+              Stay up to date
+            </Heading>
+            <chakra.h3
+              fontSize={{ base: space5, lg: space6 }}
+              fontWeight="medium"
+              my={6}
+            >
+              Receive emails when new features are available in FriendshipBook.
+              <br />I promise I won’t spam you.
+            </chakra.h3>
+          </Box>
+          <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={8}>
+            <InputGroup flexDirection="column" fontWeight="bold">
+              <Text fontSize="lg" mb={2}>
+                First name
+              </Text>
+              <Input
+                size="xl"
+                border={0}
+                bgColor="elements.background"
+                color="white"
+                placeholder="Your name"
+                sx={{
+                  _placeholder: {
+                    fontWeight: "bold",
+                    color: "white",
+                    opacity: 1,
+                  },
+                }}
+              />
+            </InputGroup>
+            <InputGroup flexDirection="column">
+              <Text fontSize="lg" fontWeight="bold" mb={2}>
+                Email Address
+              </Text>
+              <Input
+                size="xl"
+                border={0}
+                bgColor="elements.background"
+                color="white"
+                placeholder="you@example.com"
+                sx={{
+                  _placeholder: {
+                    fontWeight: "bold",
+                    color: "white",
+                    opacity: 1,
+                  },
+                }}
+              />
+            </InputGroup>
+            <Button size="xl" variant="primaryCta" alignSelf="flex-end">
+              Subscribe
+            </Button>
+          </SimpleGrid>
         </Container>
       </chakra.section>
     </chakra.main>
