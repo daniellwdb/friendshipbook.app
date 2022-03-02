@@ -6,6 +6,7 @@ import {
   Container,
   Flex,
   Heading,
+  HStack,
   Image,
   Input,
   InputGroup,
@@ -89,6 +90,28 @@ export default function Index() {
 
   return (
     <>
+      <chakra.header bgColor="elements.background" color="white">
+        <Container
+          d="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          maxW="container.xl"
+          py={8}
+        >
+          <Heading as="h4" size="md">
+            FriendshipBook
+          </Heading>
+          <HStack as="nav" spacing={6}>
+            <Button variant="link" color="white">
+              How it works
+            </Button>
+            <Button variant="link" color="white">
+              Sign in
+            </Button>
+            <Button variant="primaryCta">Sign up</Button>
+          </HStack>
+        </Container>
+      </chakra.header>
       <chakra.main bgColor="elements.background">
         <chakra.section py={{ base: 5, sm: 12, lg: 24 }}>
           <Container color="white" maxW="container.xl">
