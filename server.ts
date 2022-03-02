@@ -44,7 +44,7 @@ async function startServer() {
 
   const port = process.env.PORT || 3000;
 
-  fastify.listen(port, () => {
+  fastify.listen(port, "0.0.0.0", () => {
     console.log(`Fastify server listening on port ${port}`);
   });
 }
